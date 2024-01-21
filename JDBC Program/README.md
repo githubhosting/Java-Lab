@@ -25,11 +25,12 @@
 # Coding and Database Configuration:
 
 ## Step 6: Create Java File and Run Code
-- Create a file named `StudentDatabaseCRUD.java` and execute the code.
+- Create a file named `Read.java` and execute the code.
 
 ## Step 7: Create Database in MySQL Terminal
 - Execute the following code in the interactive MySQL terminal:
   - [MySQL Terminal Code](https://gist.github.com/myselfshravan/73f199ddff959af67f57590173d1e8b1)
+  - <script src="https://gist.github.com/myselfshravan/73f199ddff959af67f57590173d1e8b1.js"></script>
 
 ## Step 8: Update JDBC URL
 - Change the JDBC URL in your code by appending the database name at the end.
@@ -53,7 +54,7 @@
 **Note:** 
 
 ## Step 11: Set MySQL User Credentials in Code
-- In your Java code (`StudentDatabaseCRUD.java`):
+- In your Java code (`Read.java`):
   - Keep the following credentials:
     - Username: "root"
     - Password: "" (null or empty)

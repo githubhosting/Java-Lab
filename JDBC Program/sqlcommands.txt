@@ -1,0 +1,24 @@
+CREATE DATABASE school_db;
+USE school_db;
+
+CREATE TABLE students (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255),
+  usn VARCHAR(255),
+  semester INT,
+  age INT,
+  course VARCHAR(255),
+  dob DATE,
+  address VARCHAR(255)
+);
+
+INSERT INTO students (name, usn, semester, age, course, dob, address) VALUES
+  ('Mark Crane', '1MS16CS001', 5, 22, 'Computer Science', '2000-01-01', '123 Main St'),
+  ('Natalia Smith', '1MS16CS002', 5, 23, 'Computer Science', '1999-01-01', '456 Elm St'),
+  ('Gary Anderson', '1MS16CS003', 5, 24, 'Computer Science', '1998-01-01', '789 Oak St'),
+  ('Joe Natsume', '1MS16EC001', 5, 22, 'Electronics', '2000-01-01', '123 Main St'),
+  ('Sarah', '1MS16EC002', 5, 23, 'Electronics', '1999-01-01', '456 Elm St'),
+  ('Peter', '1MS16EC003', 5, 24, 'Electronics', '1998-01-01', '789 Oak St'),
+  ('Nathan', '1MS16EC004', 5, 24, 'Electronics', '1998-01-01', '789 Oak St');
+
+SELECT * FROM students;

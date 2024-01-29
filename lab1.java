@@ -1,4 +1,4 @@
-//Area of a rectangle
+//Area of a rectangle using Java
 import java.util.Scanner;
 
 public class lab1a {

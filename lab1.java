@@ -9,7 +9,6 @@ public class lab1a {
     double length = scanner.nextDouble();
     System.out.println("Enter the width of the rectangle :");
     double width = scanner.nextDouble();
-    // double a=60, y=80, z=78;
     System.out.println("The area of the rectangle is " + length * width);
   }
 }

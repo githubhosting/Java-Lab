@@ -102,6 +102,7 @@ public class lab3 {
         default:
           System.out.println("Invalid choice\n");
       }
+      sc.close(); // Close scanner
     }
   }
 }

@@ -3,18 +3,16 @@
 // b.	Calculate and display the sum of salary of all the employees of “sales” department.
 // c.	Retrieve the details of “highest paid manager” in the purchase department.
 
-
 import java.util.Scanner;
 
 class Employee {
 
-  public String name;
-  public int employeeId;
-  public String department;
-  public int age;
-  public String designation;
-  public double salary;
+  // Attributes to store employee information
+  String name, department, designation;
+  int employeeId, age;
+  double salary;
 
+  // Constructor to initialize employee object
   public Employee(
     String name,
     int employeeId,
@@ -31,11 +29,12 @@ class Employee {
     this.salary = salary;
   }
 
-  public String toString() {
-    return (
+  // Method to display employee details
+  public void display() {
+    System.out.println(
       "Name: " +
       name +
-      ", Employee ID: " +
+      ", ID: " +
       employeeId +
       ", Department: " +
       department +
@@ -51,75 +50,73 @@ class Employee {
 
 public class lab2 {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) 
+  {
     Scanner scanner = new Scanner(System.in);
-    Employee[] employees = new Employee[3];
+    Employee[] employees = new Employee[5]; // Array to store employee objects
 
-    for (int i = 0; i < 3; i++) {
-      System.out.println("Enter details for Employee " + (i + 1) + ":");
+    // Reading details for 5 employees
+    for (int i = 0; i < 5; i++) 
+    {
+      System.out.println("Enter details for Employee " + (i + 1));
       System.out.print("Name: ");
       String name = scanner.nextLine();
-      System.out.print("Employee ID: ");
-      int employeeId = scanner.nextInt();
-      scanner.nextLine();
+      System.out.print("ID: ");
+      int id = scanner.nextInt();
+      scanner.nextLine(); // Consume newline
       System.out.print("Department: ");
-      String department = scanner.nextLine();
+      String dept = scanner.nextLine();
       System.out.print("Age: ");
       int age = scanner.nextInt();
-      scanner.nextLine();
+      scanner.nextLine(); // Consume newline
       System.out.print("Designation: ");
-      String designation = scanner.nextLine();
+      String desig = scanner.nextLine();
       System.out.print("Salary: ");
-      double salary = scanner.nextDouble();
-      scanner.nextLine();
-
-      employees[i] =
-        new Employee(name, employeeId, department, age, designation, salary);
+      double sal = scanner.nextDouble();
+      scanner.nextLine(); // Consume newline
+      employees[i] = new Employee(name, id, dept, age, desig, sal);
     }
 
-    System.out.println("Employee Details:");
-    for (Employee employee : employees) {
-      System.out.println(employee);
+    // Displaying details of all employees
+    System.out.println("\nEmployee Details:");
+    for (Employee emp : employees) 
+    {
+      emp.display();
     }
 
-    System.out.print("Enter the department to calculate the sum of salaries: ");
-    String targetDepartment = scanner.nextLine();
-    double totalSalary = 0;
-    for (Employee employee : employees) {
-      if (employee.department.equalsIgnoreCase(targetDepartment)) {
-        totalSalary += employee.salary;
+    // Calculating sum of salaries in the Sales department
+    double totalSalesSal = 0;
+    for (Employee emp : employees) 
+    {
+      if (emp.department.equalsIgnoreCase("sales")) 
+      {
+        totalSalesSal += emp.salary;
       }
     }
-    System.out.println(
-      "Total salary of " + targetDepartment + " department: " + totalSalary
-    );
+    System.out.println("\nTotal Salary in Sales Department: " + totalSalesSal);
 
-    double highestSalary = 0;
+    // Finding highest paid manager in Purchase department
     Employee highestPaidManager = null;
-    for (Employee employee : employees) {
+    for (Employee emp : employees) 
+    {
       if (
-        employee.department.equalsIgnoreCase("Purchase") &&
-        employee.designation.equalsIgnoreCase("Manager") &&
-        employee.salary >= highestSalary
+        emp.department.equalsIgnoreCase("purchase") &&
+        emp.designation.equalsIgnoreCase("manager")
       ) {
-        highestSalary = employee.salary;
-        highestPaidManager = employee;
+        if (emp.salary > highestPaidManager.salary) 
+        {
+          highestPaidManager = emp;
+        }
       }
     }
-    if (highestPaidManager != null) System.out.println(
-      "Highest paid manager in the Purchase Department: " + highestPaidManager
-    ); else System.out.println("No manager found in the Purchase Department.");
 
-    System.out.println(
-      "Hiking the salaries of all the Employees of 'Sales' Department by 10%"
-    );
-    for (int i = 0; i < 3; i++) {
-      if (employees[i].department.equalsIgnoreCase("Sales")) {
-        employees[i].salary += employees[i].salary * 0.10;
-        System.out.println(
-          "New Salary of Employee " + (i + 1) + " is " + employees[i].salary
-        );
-      }
+    if (highestPaidManager != null) {
+      System.out.println("\nHighest Paid Manager in Purchase Department:");
+      highestPaidManager.display();
+    } else {
+      System.out.println("\nNo manager found in Purchase Department.");
     }
+
+    scanner.close(); // Closing scanner resource
   }
 }

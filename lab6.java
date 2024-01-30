@@ -1,157 +1,87 @@
+// 6.	Write a Java program to define a base class bank, which holds various details of customers such as name, account number, balance and member functions to read, display and an abstract method to calculate rate of interest earned by all the account holders.
+// Derive three classes namely City-Bank, SBI-bank, Canara-bank from this base class, which are offering different rate of interests.
+// Extend the calculate method of base class with in these derived classes to calculate and display the interest earned by all the account holders of these banks.
+
 import java.util.Scanner;
 
-class Bank {
+// Base class
+abstract class Bank {
 
   protected String name;
   protected long accountNumber;
   protected double balance;
-  public int year;
 
-  public void readDetails() {
+  // Member functions
+  void readDetails() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter Customer Name:");
-    this.name = scanner.nextLine();
-    System.out.println("Enter Account Number:");
-    this.accountNumber = scanner.nextLong();
-    System.out.println("Enter Balance:");
-    this.balance = scanner.nextDouble();
-    System.out.println("Enter the year");
-    this.year = scanner.nextInt();
+    System.out.print("Enter Name: ");
+    name = scanner.nextLine();
+    System.out.print("Enter Account Number: ");
+    accountNumber = scanner.nextLong();
+    System.out.print("Enter Balance: ");
+    balance = scanner.nextDouble();
   }
 
-  public void displayDetails() {
-    System.out.println("Customer Name: " + name);
+  void displayDetails() {
+    System.out.println("Name: " + name);
     System.out.println("Account Number: " + accountNumber);
     System.out.println("Balance: " + balance);
-    System.out.println("Year: " + year);
   }
 
-  public void calculateInterest() {
-    System.out.println("Interest Calculation: Base Class");
-  }
+  // Abstract method for calculating interest
+  abstract void calculateInterest();
 }
 
+// Derived class CityBank
 class CityBank extends Bank {
 
-  private double interestRate;
-
-  public void readDetails() {
-    super.readDetails();
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter Interest Rate for City Bank:");
-    this.interestRate = scanner.nextDouble();
-  }
-
-  @Override
-  public void calculateInterest() {
-    double interest = balance * interestRate / 100;
-    System.out.println("Interest earned at City Bank: " + interest);
+  // Implementation of the calculateInterest method
+  void calculateInterest() {
+    double rate = 0.05; // City Bank interest rate
+    double interest = balance * rate;
+    System.out.println("Interest Earned at City Bank: " + interest);
   }
 }
 
+// Derived class SBIBank
 class SBIBank extends Bank {
 
-  private double interestRate;
-  private double interestEarned;
-
-  public void readDetails() {
-    super.readDetails();
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter Interest Rate for SBI Bank:");
-    this.interestRate = scanner.nextDouble();
-  }
-
-  @Override
-  public void calculateInterest() {
-    double interest = balance * interestRate / 100;
-    this.interestEarned = interest; // Track interest earned
-    System.out.println("Interest earned at SBI Bank: " + interest);
-  }
-
-  public double getInterestEarned() {
-    return interestEarned;
+  // Implementation of the calculateInterest method
+  void calculateInterest() {
+    double rate = 0.06; // SBI Bank interest rate
+    double interest = balance * rate;
+    System.out.println("Interest Earned at SBI Bank: " + interest);
   }
 }
 
+// Derived class CanaraBank
 class CanaraBank extends Bank {
 
-  private double interestRate;
-
-  public void readDetails() {
-    super.readDetails();
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter Interest Rate for Canara Bank:");
-    this.interestRate = scanner.nextDouble();
-  }
-
-  @Override
-  public void calculateInterest() {
-    double interest = balance * interestRate / 100;
-    System.out.println("Interest earned at Canara Bank: " + interest);
+  // Implementation of the calculateInterest method
+  void calculateInterest() {
+    double rate = 0.04; // Canara Bank interest rate
+    double interest = balance * rate;
+    System.out.println("Interest Earned at Canara Bank: " + interest);
   }
 }
 
 public class lab6 {
 
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
-
-    CityBank[] cityBanks = new CityBank[3];
-    SBIBank[] sbiBanks = new SBIBank[3];
-    CanaraBank[] canaraBanks = new CanaraBank[3];
-
-    System.out.println("Enter details for City Bank:");
-    for (int i = 0; i < cityBanks.length; i++) {
-      cityBanks[i] = new CityBank();
-      cityBanks[i].readDetails();
-    }
-
-    System.out.println("\nEnter details for SBI Bank:");
-    for (int i = 0; i < sbiBanks.length; i++) {
-      sbiBanks[i] = new SBIBank();
-      sbiBanks[i].readDetails();
-    }
-
-    System.out.println("\nEnter details for Canara Bank:");
-    for (int i = 0; i < canaraBanks.length; i++) {
-      canaraBanks[i] = new CanaraBank();
-      canaraBanks[i].readDetails();
-    }
-
-    System.out.println("\nCity Bank Details:");
-    for (CityBank cityBank : cityBanks) {
-      cityBank.displayDetails();
-      cityBank.calculateInterest();
-    }
-
-    System.out.println("\nSBI Bank Details:");
-    for (SBIBank sbiBank : sbiBanks) {
-      sbiBank.displayDetails();
-      sbiBank.calculateInterest();
-    }
-
-    System.out.println("\nCanara Bank Details:");
-    for (CanaraBank canaraBank : canaraBanks) {
-      canaraBank.displayDetails();
-      canaraBank.calculateInterest();
-    }
-
-    double maxInterest = 0;
-    SBIBank highestInterestCustomer = null;
-    System.out.println("Enter the year you want to see the highest interest:");
-    int y = scanner.nextInt();
-    for (SBIBank sbiBank : sbiBanks) {
-      if (sbiBank.getInterestEarned() > maxInterest && sbiBank.year == y) {
-        maxInterest = sbiBank.getInterestEarned();
-        highestInterestCustomer = sbiBank;
-      }
-    }
-
-    if (highestInterestCustomer != null) {
-      System.out.println("\nCustomer with the highest interest in SBI Bank:");
-      highestInterestCustomer.displayDetails();
-    } else {
-      System.out.println("\nNo customers in SBI Bank.");
-    }
+    CityBank cityBank = new CityBank();
+    SBIBank sbiBank = new SBIBank();
+    CanaraBank canaraBank = new CanaraBank();
+    System.out.println("Enter details for City Bank account:");
+    cityBank.readDetails();
+    cityBank.displayDetails();
+    cityBank.calculateInterest();
+    System.out.println("\nEnter details for SBI Bank account:");
+    sbiBank.readDetails();
+    sbiBank.displayDetails();
+    sbiBank.calculateInterest();
+    System.out.println("\nEnter details for Canara Bank account:");
+    canaraBank.readDetails();
+    canaraBank.displayDetails();
+    canaraBank.calculateInterest();
   }
 }

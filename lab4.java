@@ -9,7 +9,7 @@ class Person {
 
   String name;
   int age;
-  char gender;
+  String gender;
 
   // Method to read person details
   void readDetails() {
@@ -20,7 +20,7 @@ class Person {
     age = scanner.nextInt();
     scanner.nextLine(); // Consume newline character
     System.out.print("Enter gender (M/F/O): ");
-    gender = scanner.next().charAt(0);
+    gender = scanner.nextLine();
   }
 
   // Method to display person details

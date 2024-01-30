@@ -1,3 +1,8 @@
+// 3.	Write a Java program using encapsulation and constructors to create a class to represent a complex number and perform the following operations:
+// a.	Addition of two complex numbers
+// b.	Subtraction of two complex numbers
+// c.	Compare two complex numbers.
+
 //complex numbers
 import java.util.Scanner;
 

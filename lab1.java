@@ -1,3 +1,9 @@
+// 1.	Write a java program:
+// a.	To calculate and display the roots of Quadratic Equation.
+// b.	To multiply two arrays and display the result.
+// c.	To sort the elements in ascending and descending order using bubble sort algorithm.
+
+
 import java.util.Scanner;
 
 public class lab1a {

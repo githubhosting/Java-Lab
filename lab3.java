@@ -39,6 +39,10 @@ class complex {
     return c3;
   }
 
+  public boolean isEqual(complex c2) {
+    return this.real == c2.real && this.imaginary == c2.imaginary;
+  }
+
   public void increment() {
     this.real++;
     this.imaginary++;

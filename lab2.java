@@ -50,8 +50,7 @@ class Employee {
 
 public class lab2 {
 
-  public static void main(String[] args) 
-  {
+  public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     Employee[] employees = new Employee[5]; // Array to store employee objects
 
@@ -97,14 +96,14 @@ public class lab2 {
 
     // Finding highest paid manager in Purchase department
     Employee highestPaidManager = null;
-    for (Employee emp : employees) 
-    {
+    for (Employee emp : employees) {
       if (
         emp.department.equalsIgnoreCase("purchase") &&
         emp.designation.equalsIgnoreCase("manager")
       ) {
-        if (emp.salary > highestPaidManager.salary) 
-        {
+        if (
+          highestPaidManager == null || emp.salary > highestPaidManager.salary
+        ) {
           highestPaidManager = emp;
         }
       }

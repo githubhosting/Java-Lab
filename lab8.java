@@ -13,23 +13,38 @@ public class lab8 {
       int denominator = scanner.nextInt();
 
       if (numerator < 0 || denominator < 0) {
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(
+          "IllegalArgumentException: Both the numbers should be non-negative"
+        );
       }
 
       if (denominator == 0) {
-        throw new ArithmeticException();
+        throw new ArithmeticException("ArithmeticException: Cannot divide by zero");
       }
 
       int result = numerator / denominator;
       System.out.println("Result of division: " + result);
     } catch (IllegalArgumentException e) {
-      System.out.println(
-        "IllegalArgumentException: Both the numbers should be non-negative"
-      );
+      System.out.println(e.getMessage());
     } catch (ArithmeticException e) {
-      System.out.println("ArithmeticException: Cannot divide by zero");
+      System.out.println(e.getMessage());
     } finally {
       System.out.println("Program execution complete.");
     }
   }
 }
+
+// All the types of exception in java
+// 1. ArithmeticException
+// 2. ArrayIndexOutOfBoundsException
+// 3. ClassNotFoundException
+// 4. FileNotFoundException
+// 5. IOException
+// 6. InterruptedException
+// 7. NoSuchFieldException
+// 8. NoSuchMethodException
+// 9. NullPointerException
+// 10. NumberFormatException
+// 11. RuntimeException
+// 12. StringIndexOutOfBoundsException
+// 13. UnsupportedOperationException

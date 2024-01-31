@@ -26,19 +26,19 @@ class RupeeConversion implements Compute {
 public class lab9 {
 
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
     ByteConversion ob1 = new ByteConversion();
     System.out.println(
       "Enter the number of kilobytes to be converted to gigabytes:"
     );
-    double kb = scanner.nextDouble();
+    double kb = sc.nextDouble();
     double gb = ob1.convert(kb);
     System.out.println("Required value in gigabytes: " + gb);
 
     RupeeConversion ob2 = new RupeeConversion();
     System.out.println("Enter the amount in Euros to be converted to Rupees:");
-    double euro = scanner.nextDouble();
+    double euro = sc.nextDouble();
     double rupee = ob2.convert(euro);
     System.out.println("Required value in Rupees: " + rupee);
   }

@@ -42,16 +42,6 @@ class complex {
   public boolean isEqual(complex c2) {
     return this.real == c2.real && this.imaginary == c2.imaginary;
   }
-
-  public void increment() {
-    this.real++;
-    this.imaginary++;
-  }
-
-  public void decrement() {
-    this.real--;
-    this.imaginary--;
-  }
 }
 
 public class lab3 {
@@ -70,9 +60,7 @@ public class lab3 {
     complex c1 = new complex(r1, i1);
     complex c2 = new complex(r2, i2);
     while (true) {
-      System.out.println(
-        "\n1.add\n2.subract\n3.increment\n4.decrement\n5.exit\n"
-      );
+      System.out.println("\n1.add\n2.subract\n3.compare\n4.exit\n");
       int ch = sc.nextInt();
       switch (ch) {
         case 1:
@@ -89,24 +77,16 @@ public class lab3 {
           }
         case 3:
           {
-            c1.increment();
-            c1.display();
+            System.out.println(c1.isEqual(c2));
             break;
           }
         case 4:
-          {
-            c1.decrement();
-            c1.display();
-            break;
-          }
-        case 5:
           {
             System.exit(0);
           }
         default:
           System.out.println("Invalid choice\n");
       }
-      sc.close(); // Close scanner
     }
   }
 }
